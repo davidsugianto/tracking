@@ -24,9 +24,9 @@ x=0
 y=0
 radius=0
 simpan_data = 0
-data_x = 0
-data_y = 0
-data_radius = 0
+data_x = 0 		#posisi bola
+data_y = 0 		#jarak bola dengan robot
+data_radius = 0	#ukuran bola
 
 def motor_belakang(cw,ccw,pwm_be):
 	GPIO.output(9,cw)
@@ -116,20 +116,24 @@ def main():
 	data_y = simpan_data[1]
 	data_radius = simpan_data[2]
 	
-	if data_x < 100:
-		print "stop"
-		putar_kanan()
-	elif data_x > 156:
+	if data_y <= 180 :
 		print "maju"
 		maju()
-	else :
+		if data_x == 175:
+			maju()
+		elif data_x > 175:
+			putar_kiri()
+			maju()
+		elif data_x < 175:
+			putar_kanan()
+			maju()
+	elif data_y > 180:
 		print "stop"
-		#putar_kanan()
 		stop()
+	else :
+		print "tidak menemukan bola"
+		#stop()
 	
-
 while True:
 	main()
 
-#if __name__ == '__tracking__':
-#    tracking()
