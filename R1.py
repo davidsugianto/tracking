@@ -44,8 +44,8 @@ def motor_kiri(cw,ccw,pwm_ki):
 	pwm2.ChangeDutyCycle(pwm_ki)
 
 def maju():
-	motor_kanan(1,0,50)
-	motor_kiri(1,0,50)
+	motor_kanan(1,0,40)
+	motor_kiri(1,0,40)
 	#motor_belakang(0,0,30)
 
 def mundur():
@@ -63,14 +63,14 @@ def kiri():
         motor_belakang(0,1,15)
 
 def putar_kanan():
-        motor_kanan(1,0,20)
-        motor_kiri(0,1,20)
-        motor_belakang(1,0,20)
+        motor_kanan(1,0,15)
+        motor_kiri(0,1,15)
+        motor_belakang(1,0,15)
 
 def putar_kiri():
-        motor_kanan(0,1,20)
-        motor_kiri(1,0,20)
-        motor_belakang(0,1,20)
+        motor_kanan(0,1,15)
+        motor_kiri(1,0,15)
+        motor_belakang(0,1,15)
         
 def stop():
         motor_kanan(0,0,20)
@@ -116,23 +116,19 @@ def main():
 	data_y = simpan_data[1]
 	data_radius = simpan_data[2]
 	
-	if data_y <= 180 :
-		print "maju"
+	if (data_x > 140 and data_x < 180):
+		print "bola berada di tengan"
 		maju()
-		if data_x == 175:
-			maju()
-		elif data_x > 175:
-			putar_kiri()
-			maju()
-		elif data_x < 175:
-			putar_kanan()
-			maju()
-	elif data_y > 180:
-		print "stop"
-		stop()
+	elif (data_x < 140):
+		print "bola berada di kanan"
+		putar_kiri()
+	elif (data_x > 180):
+		print "bola berada di kiri"
+		putar_kanan()
 	else :
-		print "tidak menemukan bola"
-		#stop()
+		print "bola tidak ditemukan"
+		stop()
+
 	
 while True:
 	main()
