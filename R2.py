@@ -31,16 +31,16 @@ radius=0
 Pid = 0
 error = 0 
 last_error = 0
-Kp = 12
-Ki = 1
-Kd = 20
+Kp = 0.2 #lebih kecil dari Kd
+Ki = 0.01	# kecil sendiri
+Kd = 0.10 #lebih besar dari Kp
 Ts = 1
-fast_ka = float(20)
-fast_ki = float(20)
+fast_ka = float(30)
+fast_ki = float(30)
 fast_be = 0
-max_speed = 20
+max_speed = 30
 min_speed = 0
-set_point = 30
+set_point = 40
 pwm_be = 0
 #
 
